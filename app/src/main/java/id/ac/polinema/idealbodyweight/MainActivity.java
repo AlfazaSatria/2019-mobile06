@@ -9,12 +9,12 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
-	// Deklarasikan atribut Fragment di sini
-
+	private id.ac.polinema.idealbodyweight.fragments.aboutFragment aboutFragment;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		aboutFragment = aboutFragment.newInstance("Alfaza Satria Jalasena");
 	}
 
 	@Override
@@ -25,7 +25,12 @@ public class MainActivity extends AppCompatActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-		// TODO: Tambahkan penanganan menu di sini
+		if (item.getItemId() == R.id.menu_about) {
+			getSupportFragmentManager().beginTransaction()
+					.replace(R.id.fragment_container, aboutFragment)
+					.addToBackStack(null)
+					.commit();
+		}
 
 		return super.onOptionsItemSelected(item);
 	}
